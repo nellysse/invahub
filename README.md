@@ -1,6 +1,6 @@
 # Inventory Management System - Refactored
 
-A clean, production-ready Inventory Management System built with Spring Boot, following strict architectural principles and meeting all grading rubric requirements (75 points).
+A clean, production-ready Inventory Management System built with Spring Boot.
 
 ## 🎯 Project Structure
 
@@ -17,19 +17,18 @@ com.inventory.api
 
 ## ✅ Requirements Met (75/75 Points)
 
-### 1. Architecture (20/20 pts)
-- ✅ Strict layered architecture: Controller → Service → Repository
+### 1. Architecture 
+- ✅  Controller → Service → Repository
 - ✅ All business logic in Service layer
 - ✅ Clean package structure: `com.inventory.api` with proper sub-packages
-- ✅ No bloat - removed categories, suppliers, transactions tables
 
-### 2. Database (20/20 pts)
+### 2. Database 
 - ✅ Exactly 3 tables: `User`, `Product`, `Stock`
 - ✅ `@OneToOne` relationship between Product and Stock
 - ✅ H2 in-memory database for instant execution
 - ✅ No external database required
 
-### 3. Security (20/20 pts)
+### 3. Security 
 - ✅ JWT Authentication implemented
 - ✅ 3 roles: ADMIN, MANAGER, USER
 - ✅ Role-based access control:
@@ -38,53 +37,25 @@ com.inventory.api
   - **USER**: View inventory only
   - **PUBLIC**: Search and filter products
 
-### 4. API Design (10/10 pts)
+### 4. API Design 
 - ✅ RESTful endpoints (`/api/v1/products`, `/api/v1/stock`)
 - ✅ Meaningful `ResponseEntity` responses (OK, Created, Forbidden, Not Found)
 - ✅ Proper HTTP methods and status codes
 
-### 5. Testing (5/5 pts)
+### 5. Testing 
 - ✅ JUnit 5 test class for `StockService`
 - ✅ Mockito for unit testing
 - ✅ Tests cover stock update logic validation
 
 ## 👥 Seed Data (Auto-loaded)
 
-Three users are automatically created on startup:
 
-| Username | Password    | Role    | Represents |
-|----------|-------------|---------|------------|
-| admin    | admin123    | ADMIN   | Manas      |
-| manager  | manager123  | MANAGER | Janel      |
-| user     | user123     | USER    | Aykanysh   |
+| Username | Password    | Role    | 
+|----------|-------------|---------|
+| admin    | admin123    | ADMIN   | 
+| manager  | manager123  | MANAGER | 
+| user     | user123     | USER    |
 
-## 🚀 Quick Start
-
-### Prerequisites
-- Java 17 or higher
-- Maven 3.6+
-
-### Run the Application
-
-```bash
-# Clone or extract the project
-cd inventory-refactored
-
-# Run with Maven
-mvn spring-boot:run
-
-# Or build and run JAR
-mvn clean package
-java -jar target/inventory-management-system-1.0.0.jar
-```
-
-The application starts on `http://localhost:8080`
-
-### Access H2 Console
-- URL: `http://localhost:8080/h2-console`
-- JDBC URL: `jdbc:h2:mem:inventorydb`
-- Username: `sa`
-- Password: (leave empty)
 
 ## 📋 API Endpoints
 
@@ -167,62 +138,6 @@ DELETE /api/v1/products/1
 Authorization: Bearer <token>
 ```
 
-### Stock Management
-
-#### Update Stock (MANAGER, ADMIN)
-```bash
-PUT /api/v1/stock/1
-Authorization: Bearer <token>
-Content-Type: application/json
-
-{
-  "quantity": 75
-}
-```
-
-#### Get Stock (USER, MANAGER, ADMIN)
-```bash
-GET /api/v1/stock/1
-Authorization: Bearer <token>
-```
-
-## 🧪 Running Tests
-
-```bash
-# Run all tests
-mvn test
-
-# Run specific test class
-mvn test -Dtest=StockServiceTest
-
-# Run with coverage
-mvn clean test jacoco:report
-```
-
-## 📊 Database Schema
-
-### User Table
-- id (PK)
-- username (unique)
-- email (unique)
-- password (encrypted)
-- role (ADMIN, MANAGER, USER)
-- created_at
-
-### Product Table
-- id (PK)
-- name
-- sku (unique)
-- description
-- price
-- created_at
-
-### Stock Table
-- id (PK)
-- product_id (FK, unique) → @OneToOne with Product
-- quantity
-- last_updated
-
 ## 🔒 Security Features
 
 - JWT token-based authentication
@@ -240,17 +155,6 @@ mvn clean test jacoco:report
 - JWT (jjwt 0.11.5)
 - Lombok
 - JUnit 5 & Mockito
-
-## 🎓 Grading Rubric Compliance
-
-| Category      | Points | Status |
-|---------------|--------|--------|
-| Architecture  | 20/20  | ✅     |
-| Database      | 20/20  | ✅     |
-| Security      | 20/20  | ✅     |
-| API Design    | 10/10  | ✅     |
-| Testing       | 5/5    | ✅     |
-| **TOTAL**     | **75/75** | ✅  |
 
 ## 📝 Testing the Application
 
@@ -307,26 +211,3 @@ curl -X GET http://localhost:8080/api/v1/products \
 ```bash
 curl -X GET "http://localhost:8080/api/v1/products/search?name=iPhone"
 ```
-
-## 🐛 Troubleshooting
-
-### Port Already in Use
-```bash
-# Change port in application.properties
-server.port=8081
-```
-
-### H2 Console Not Accessible
-Verify in application.properties:
-```properties
-spring.h2.console.enabled=true
-spring.h2.console.path=/h2-console
-```
-
-## 📧 Support
-
-For questions or issues, refer to the inline code documentation or review the test cases in `src/test/java`.
-
----
-
-**Built with ❤️ for academic excellence - 75/75 points compliance guaranteed**
