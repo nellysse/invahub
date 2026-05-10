@@ -15,48 +15,6 @@ com.inventory.api
 └── config/          # Application configuration
 ```
 
-## ✅ Requirements Met (75/75 Points)
-
-### 1. Architecture 
-- ✅  Controller → Service → Repository
-- ✅ All business logic in Service layer
-- ✅ Clean package structure: `com.inventory.api` with proper sub-packages
-
-### 2. Database 
-- ✅ Exactly 3 tables: `User`, `Product`, `Stock`
-- ✅ `@OneToOne` relationship between Product and Stock
-- ✅ H2 in-memory database for instant execution
-- ✅ No external database required
-
-### 3. Security 
-- ✅ JWT Authentication implemented
-- ✅ 3 roles: ADMIN, MANAGER, USER
-- ✅ Role-based access control:
-  - **ADMIN**: Full product management (Create/Update/Delete)
-  - **MANAGER**: Update stock quantities only
-  - **USER**: View inventory only
-  - **PUBLIC**: Search and filter products
-
-### 4. API Design 
-- ✅ RESTful endpoints (`/api/v1/products`, `/api/v1/stock`)
-- ✅ Meaningful `ResponseEntity` responses (OK, Created, Forbidden, Not Found)
-- ✅ Proper HTTP methods and status codes
-
-### 5. Testing 
-- ✅ JUnit 5 test class for `StockService`
-- ✅ Mockito for unit testing
-- ✅ Tests cover stock update logic validation
-
-## 👥 Seed Data (Auto-loaded)
-
-
-| Username | Password    | Role    | 
-|----------|-------------|---------|
-| admin    | admin123    | ADMIN   | 
-| manager  | manager123  | MANAGER | 
-| user     | user123     | USER    |
-
-
 ## 📋 API Endpoints
 
 ### Authentication
